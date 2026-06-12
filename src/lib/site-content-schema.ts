@@ -93,6 +93,12 @@ const featuredProjectsSchema = z.object({
   projectSlugs: z.array(z.string().min(1)),
 });
 
+const cvSchema = z.object({
+  label: z.string().min(1),
+  fileName: z.string(),
+  enabled: z.boolean(),
+});
+
 const projectArchiveSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
@@ -109,6 +115,7 @@ export const siteContentSchema = z.object({
   contact: contactSchema,
   featuredProjects: featuredProjectsSchema,
   projectArchive: projectArchiveSchema,
+  cv: cvSchema,
 });
 
 export type SiteContent = z.infer<typeof siteContentSchema>;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   BriefcaseBusiness,
+  FileDown,
   Database,
   GraduationCap,
   Mail,
@@ -18,13 +19,14 @@ import { HeroOrbit } from "@/components/site/hero-orbit";
 import { ProjectArchive } from "@/components/site/project-archive";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { getSiteContent } from "@/lib/site-content";
+import { cvFileExists, getSiteContent } from "@/lib/site-content";
 
 const expertiseIcons = [ServerCog, BriefcaseBusiness, Database];
 
 export default async function HomePage() {
-  const content = await getSiteContent();
+  const [content, hasCv] = await Promise.all([getSiteContent(), cvFileExists()]);
   const visibleProjects = content.projectArchive.projects.filter((project) => project.visible);
+  const showCvDownload = content.cv.enabled && hasCv;
 
   const resolveInternalHref = (href: string) => {
     if (href === "/projects") {
@@ -116,6 +118,21 @@ export default async function HomePage() {
                   {content.hero.secondaryCtaLabel}
                 </a>
               )}
+              {showCvDownload ? (
+                <a
+                  href="/api/cv"
+                  download="Nijat Aliyev CV.pdf"
+                  className={buttonVariants({
+                    variant: "outline",
+                    size: "lg",
+                    className:
+                      "rounded-full border-white/[0.12] bg-white/[0.06] px-7 text-white hover:bg-white/[0.1]",
+                  })}
+                >
+                  <FileDown className="size-4" />
+                  {content.cv.label}
+                </a>
+              ) : null}
             </div>
           </Reveal>
 

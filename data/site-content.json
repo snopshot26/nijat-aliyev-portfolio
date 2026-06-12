@@ -236,5 +236,10 @@
         "visible": true
       }
     ]
+  },
+  "cv": {
+    "label": "Download CV",
+    "fileName": "Nijat Aliyev CV.pdf",
+    "enabled": true
   }
 }

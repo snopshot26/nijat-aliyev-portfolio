@@ -7,6 +7,7 @@ import {
   ArrowUp,
   Eye,
   EyeOff,
+  FileText,
   FolderKanban,
   GraduationCap,
   Home,
@@ -26,6 +27,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { CvUploadPanel } from "@/components/admin/cv-upload-panel";
 import type { SiteContent, SiteProject } from "@/lib/site-content-schema";
 import { cn } from "@/lib/utils";
 
@@ -36,11 +38,13 @@ type AdminSectionId =
   | "skills"
   | "education"
   | "contact"
+  | "cv"
   | "featured-projects"
   | "project-archive";
 
 type AdminDashboardProps = {
   initialContent: SiteContent;
+  initialHasCvFile: boolean;
 };
 
 const sections: Array<{
@@ -54,6 +58,7 @@ const sections: Array<{
   { id: "skills", label: "Skills", icon: Layers2 },
   { id: "education", label: "Education", icon: GraduationCap },
   { id: "contact", label: "Contact", icon: Mail },
+  { id: "cv", label: "CV / Resume", icon: FileText },
   { id: "featured-projects", label: "Featured Projects", icon: FolderKanban },
   { id: "project-archive", label: "Project Archive", icon: FolderKanban },
 ];
@@ -72,7 +77,10 @@ const newProject = (): SiteProject => ({
   visible: true,
 });
 
-export function AdminDashboard({ initialContent }: AdminDashboardProps) {
+export function AdminDashboard({
+  initialContent,
+  initialHasCvFile,
+}: AdminDashboardProps) {
   const router = useRouter();
   const [draft, setDraft] = useState(initialContent);
   const [activeSection, setActiveSection] = useState<AdminSectionId>("overview");
@@ -619,6 +627,23 @@ export function AdminDashboard({ initialContent }: AdminDashboardProps) {
                   education: { ...current.education, topics: items },
                 }))
               }
+            />
+          </EditorPanel>
+        ) : null}
+
+        {activeSection === "cv" ? (
+          <EditorPanel title="CV / Resume">
+            <CvUploadPanel
+              label={draft.cv.label}
+              onLabelChange={(value) =>
+                updateDraft((current) => ({
+                  ...current,
+                  cv: { ...current.cv, label: value },
+                }))
+              }
+              initialFileName={draft.cv.fileName}
+              initialEnabled={draft.cv.enabled}
+              initialHasFile={initialHasCvFile}
             />
           </EditorPanel>
         ) : null}
