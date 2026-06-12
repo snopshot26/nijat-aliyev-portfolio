@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowUpRight, Code2, ExternalLink, Lock } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Code2, ExternalLink, ImageIcon, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { GlassPanel } from "@/components/shared/glass-panel";
@@ -14,6 +15,8 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const hasPreviewImage = Boolean(project.previewImage);
+
   return (
     <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.28, ease: "easeOut" }}>
       <GlassPanel className="group relative flex h-full flex-col overflow-hidden p-0 transition duration-300 hover:border-white/[0.16]">
@@ -33,25 +36,55 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <ArrowUpRight className="size-4" />
             </span>
           </div>
-          <div className="relative z-10 mt-8 rounded-[1.4rem] border border-white/[0.12] bg-black/[0.18] p-3 backdrop-blur-md sm:mt-14 sm:rounded-[1.75rem] sm:p-5">
-            <div className="rounded-[1.1rem] border border-white/[0.08] bg-black/[0.32] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:rounded-[1.25rem] sm:p-4">
-              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-white/60">
-                <span>Preview</span>
-                <span>{project.tags[0]}</span>
-              </div>
-              <div className="mt-4 grid gap-3">
-                <div className="relative h-20 overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.06] sm:h-24 sm:rounded-2xl">
-                  <div className={cn("absolute inset-0 bg-gradient-to-br", project.accent)} />
-                  <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.16),transparent)] opacity-70" />
+
+          <div className="relative z-10 mt-8 overflow-hidden rounded-[1.4rem] border border-white/[0.12] bg-black/[0.18] backdrop-blur-md sm:mt-14 sm:rounded-[1.75rem]">
+            <div className="flex items-center justify-between border-b border-white/[0.08] px-4 py-3 text-[11px] uppercase tracking-[0.22em] text-white/60 sm:px-5">
+              <span>Demo preview</span>
+              <span>{project.tags[0]}</span>
+            </div>
+
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
+              {hasPreviewImage ? (
+                <Image
+                  src={project.previewImage}
+                  alt={`${project.name} demo preview`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 960px"
+                  className="object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+                  priority
+                />
+              ) : (
+                <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center">
+                  <div className="inline-flex size-12 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06]">
+                    <ImageIcon className="size-5 text-primary" />
+                  </div>
+                  <p className="text-sm text-white/70">
+                    Upload a demo screenshot in admin to show a live preview here.
+                  </p>
+                  {project.demoUrl ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={buttonVariants({
+                        variant: "outline",
+                        size: "sm",
+                        className:
+                          "rounded-full border-white/[0.12] bg-white/[0.04] text-white hover:bg-white/[0.08]",
+                      })}
+                    >
+                      <ExternalLink className="size-4" />
+                      Open demo
+                    </a>
+                  ) : null}
                 </div>
-                <div className="grid grid-cols-[1.1fr_0.9fr] gap-3">
-                  <div className="h-8 rounded-lg border border-white/[0.08] bg-white/[0.05] sm:h-10 sm:rounded-xl" />
-                  <div className="h-8 rounded-lg border border-white/[0.08] bg-white/[0.05] sm:h-10 sm:rounded-xl" />
-                </div>
-              </div>
+              )}
+
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(2,6,23,0.55))]" />
             </div>
           </div>
         </div>
+
         <div className="flex flex-1 flex-col gap-4 p-4 sm:gap-5 sm:p-6">
           <div>
             <h3 className="text-lg font-semibold text-white sm:text-xl">{project.name}</h3>
@@ -109,6 +142,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.demoUrl ? (
               <a
                 href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer"
                 className={buttonVariants({
                   className: "h-10 flex-1 rounded-full sm:h-9",
                 })}

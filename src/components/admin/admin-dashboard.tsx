@@ -28,6 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CvUploadPanel } from "@/components/admin/cv-upload-panel";
+import { ProjectImageUpload } from "@/components/admin/project-image-upload";
 import type { SiteContent, SiteProject } from "@/lib/site-content-schema";
 import { cn } from "@/lib/utils";
 
@@ -74,6 +75,7 @@ const newProject = (): SiteProject => ({
   accent: "from-sky-500/30 via-cyan-400/10 to-transparent",
   githubUrl: "",
   demoUrl: "",
+  previewImage: "",
   visible: true,
 });
 
@@ -1070,6 +1072,16 @@ export function AdminDashboard({
                       }
                     />
                   </div>
+                  <ProjectImageUpload
+                    slug={selectedProject.slug}
+                    previewImage={selectedProject.previewImage}
+                    onPreviewImageChange={(value) =>
+                      upsertSelectedProject((project) => ({
+                        ...project,
+                        previewImage: value,
+                      }))
+                    }
+                  />
                   <div className="mt-4 flex flex-wrap gap-2">
                     {archiveStatusOptions.map((option) => (
                       <button

@@ -84,6 +84,7 @@ const projectSchema = z.object({
   accent: z.string().min(1),
   githubUrl: z.string(),
   demoUrl: z.string(),
+  previewImage: z.string(),
   visible: z.boolean(),
 });
 
