@@ -38,31 +38,42 @@ export function ProjectImageUpload({
     formData.append("file", file);
 
     startUploading(async () => {
-      const response = await fetch("/api/admin/project-image", {
-        method: "POST",
-        body: formData,
-      });
+      try {
+        const response = await fetch("/api/admin/project-image", {
+          method: "POST",
+          body: formData,
+        });
 
-      const payload = (await response.json()) as {
-        error?: string;
-        previewImage?: string;
-      };
+        const raw = await response.text();
+        let payload: { error?: string; previewImage?: string } = {};
 
-      if (!response.ok) {
-        toast.error(payload.error ?? "Unable to upload preview image.");
-        return;
+        if (raw) {
+          try {
+            payload = JSON.parse(raw) as { error?: string; previewImage?: string };
+          } catch {
+            toast.error("Upload failed. Server returned an invalid response.");
+            return;
+          }
+        }
+
+        if (!response.ok) {
+          toast.error(payload.error ?? "Unable to upload preview image.");
+          return;
+        }
+
+        if (payload.previewImage) {
+          onPreviewImageChange(payload.previewImage);
+        }
+
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+
+        toast.success("Demo preview uploaded.");
+        router.refresh();
+      } catch {
+        toast.error("Upload failed. Check your connection and try again.");
       }
-
-      if (payload.previewImage) {
-        onPreviewImageChange(payload.previewImage);
-      }
-
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-
-      toast.success("Demo preview uploaded.");
-      router.refresh();
     });
   };
 

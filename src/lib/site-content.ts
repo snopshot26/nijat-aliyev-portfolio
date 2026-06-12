@@ -1,6 +1,7 @@
 import { access, mkdir, readFile, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { persistSiteContent, resolveSiteContentSource } from "@/lib/content-storage";
 import { siteContentSchema, type SiteContent } from "@/lib/site-content-schema";
 
 const dataDir = path.join(process.cwd(), "data");
@@ -24,14 +25,15 @@ async function resolveCvFilePath() {
 }
 
 export async function getSiteContent(): Promise<SiteContent> {
-  const raw = await readFile(siteContentPath, "utf8");
-  return siteContentSchema.parse(JSON.parse(raw));
+  return resolveSiteContentSource(siteContentPath, async () => {
+    const raw = await readFile(siteContentPath, "utf8");
+    return siteContentSchema.parse(JSON.parse(raw));
+  }).then((content) => siteContentSchema.parse(content));
 }
 
 export async function saveSiteContent(content: SiteContent): Promise<SiteContent> {
   const parsed = siteContentSchema.parse(content);
-  await mkdir(dataDir, { recursive: true });
-  await writeFile(siteContentPath, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
+  await persistSiteContent(siteContentPath, parsed);
   return parsed;
 }
 
