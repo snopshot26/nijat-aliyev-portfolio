@@ -1,0 +1,240 @@
+{
+  "hero": {
+    "name": "Nijat Aliyev",
+    "title": "Full-Stack Developer | Software Engineer",
+    "headline": "Building reliable software and solving real-world problems.",
+    "subtitle": "Full-Stack Developer focused on backend systems, automation tools, cloud infrastructure, databases, and scalable applications.",
+    "availability": "Open to backend, full-stack, and systems-focused opportunities",
+    "primaryCtaLabel": "Explore projects",
+    "primaryCtaHref": "/projects",
+    "secondaryCtaLabel": "Get in touch",
+    "secondaryCtaHref": "mailto:hello@nijataliyev.com",
+    "metrics": [
+      {
+        "value": "Backend-first",
+        "label": "Systems, APIs, automation, and infrastructure"
+      },
+      {
+        "value": "Full-stack",
+        "label": "From UX surfaces to production deployment"
+      },
+      {
+        "value": "Scalable",
+        "label": "Reliable architecture for real-world growth"
+      }
+    ]
+  },
+  "about": {
+    "title": "Full-stack development shaped by systems thinking.",
+    "description": "I enjoy building software that is dependable under real usage, maintainable over time, and thoughtful in how it balances engineering depth with product clarity. My work spans full-stack delivery, backend architecture, automation, infrastructure, and the technical foundations that help teams move faster with confidence.",
+    "highlights": [
+      "Backend systems and API-driven applications",
+      "Automation workflows that reduce repetitive work",
+      "Cloud-ready deployment and operational stability"
+    ]
+  },
+  "skills": {
+    "title": "A broad technical toolkit anchored in practical software delivery.",
+    "description": "From programming languages and backend frameworks to infrastructure and core computer science, the stack is organized around building software that is dependable, scalable, and maintainable.",
+    "groups": [
+      {
+        "id": "programming",
+        "title": "Programming",
+        "skills": [
+          "C++",
+          "C#",
+          "JavaScript",
+          "TypeScript",
+          "Python",
+          "SQL"
+        ]
+      },
+      {
+        "id": "frontend",
+        "title": "Frontend",
+        "skills": [
+          "React",
+          "Next.js",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        "id": "backend",
+        "title": "Backend",
+        "skills": [
+          "Node.js",
+          "Express",
+          "ASP.NET",
+          "Flask",
+          "REST APIs"
+        ]
+      },
+      {
+        "id": "databases",
+        "title": "Databases",
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "SQL Server",
+          "Prisma"
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "skills": [
+          "Docker",
+          "Linux",
+          "Nginx",
+          "VPS",
+          "PM2",
+          "Git"
+        ]
+      },
+      {
+        "id": "computer-science",
+        "title": "Computer Science",
+        "skills": [
+          "Data Structures",
+          "Algorithms",
+          "OOP",
+          "Networking",
+          "Operating Systems",
+          "Software Architecture",
+          "System Design"
+        ]
+      }
+    ]
+  },
+  "technicalExpertise": {
+    "title": "Strongest where architecture, implementation, and operations meet.",
+    "description": "The most valuable work often sits between code quality, system reliability, and delivery speed. These are the areas where I prefer to operate.",
+    "areas": [
+      {
+        "title": "Backend Engineering",
+        "description": "Designing services, API contracts, data flows, and operational patterns that stay stable as complexity grows.",
+        "bullets": [
+          "REST API design and service composition",
+          "Business logic organization and modular architecture",
+          "Performance-aware data handling"
+        ]
+      },
+      {
+        "title": "Automation & Productivity Tools",
+        "description": "Building internal tools and automated workflows that cut manual steps and improve consistency across teams or operations.",
+        "bullets": [
+          "Workflow automation and task orchestration",
+          "Integration-heavy tooling",
+          "Repeatable developer and business processes"
+        ]
+      },
+      {
+        "title": "Infrastructure & Delivery",
+        "description": "Taking applications beyond local development with deployment, process management, web serving, and maintainable environments.",
+        "bullets": [
+          "Dockerized environments and Linux-based hosting",
+          "Nginx, PM2, and VPS deployment flows",
+          "Operational discipline for production readiness"
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "institution": "Computer Science Focus",
+    "summary": "Strong grounding in software engineering fundamentals, systems thinking, and core computer science topics that support reliable full-stack development.",
+    "topics": [
+      "Data Structures and Algorithms",
+      "Object-Oriented Programming",
+      "Networking and Operating Systems",
+      "Software Architecture and System Design",
+      "Ozyegin University Computer Science"
+    ]
+  },
+  "contact": {
+    "title": "Let's build software that is robust, scalable, and useful.",
+    "description": "If you're hiring for backend, full-stack, automation, or systems-oriented work, I'd be happy to connect.",
+    "email": "nijat.aliyev2005@gmail.com",
+    "location": "Istanbul, Turkey",
+    "focus": "Backend, Full-Stack, Infrastructure",
+    "links": [
+      {
+        "label": "Email",
+        "value": "nijat.aliyev2005@gmail.com",
+        "href": "mailto:nijat.aliyev2005@gmail.com"
+      },
+      {
+        "label": "Location",
+        "value": "Istanbul, Turkey",
+        "href": ""
+      },
+      {
+        "label": "Focus",
+        "value": "Backend, Full-Stack, Infrastructure",
+        "href": ""
+      }
+    ]
+  },
+  "featuredProjects": {
+    "title": "Selected work across platforms, analytics, automation, and systems.",
+    "description": "These projects reflect a practical engineering focus: dependable architecture, clear workflows, and software built to solve concrete problems.",
+    "projectSlugs": [
+      "project-1781291031986"
+    ]
+  },
+  "projectArchive": {
+    "title": "Selected projects across automation, platforms, systems, and tooling.",
+    "description": "Browse the archive by technology, delivery state, and problem space. The structure is built to scale comfortably as more projects are added.",
+    "searchPlaceholder": "Search projects, technologies, or keywords",
+    "projects": [
+      {
+        "slug": "project-1781291031986",
+        "name": "GNSS-Triangulation-Engine",
+        "summary": "GNSS-Triangulation-Engine",
+        "description": "A scientific GNSS multilateration system: compute geolocation from pseudoranges, visualize orbits and solutions, run multiple nonlinear solvers (Gauss-Newton, Levenberg-Marquardt, Newton-Raphson). With CI, tests, and reproducible experiments it is suitable as a portfolio or research baseline.",
+        "technologies": [
+          "Nonlinear least-squares optimization (Gauss-Newton",
+          "Levenberg-Marquardt",
+          "Newton-Raphson)\nCoordinate frames (ECEF",
+          "LLA",
+          "WGS84)\nSimulation with configurable noise and geometry\nFull-stack visualization (Three.js",
+          "Leaflet)\nAPI design (FastAPI)\nTesting and CI (pytest",
+          "Ruff",
+          "Black",
+          "GitHub Actions)"
+        ],
+        "tags": [
+          "Internal"
+        ],
+        "status": "Active",
+        "accent": "from-sky-500/30 via-cyan-400/10 to-transparent",
+        "githubUrl": "https://github.com/snopshot26/GNSS-Triangulation-Engine",
+        "demoUrl": "https://gnss-triangulation-engine.vercel.app/",
+        "visible": true
+      },
+      {
+        "slug": "project-1781293058814",
+        "name": "Tfab service",
+        "summary": "Tflow/Tfab is a digital services platform that provides online payment processing and checkout solutions for digital products, software-related services, API integrations, technical setup, and support services.",
+        "description": "The company works with e-commerce payments through banking and payment-provider infrastructure, including eComCharge and partner integrations such as FastPay.\n\nThe platform allows partners and clients to create payment requests, process card payments through a secure hosted checkout, track payment statuses, and manage settlements and reconciliation through an admin panel.",
+        "technologies": [
+          "Node.js / Express\nReact / Vite\nMongoDB\nNginx",
+          "PM2",
+          "Linux server\nAPI tokens",
+          "admin auth",
+          "webhook verification",
+          "rate limits\nFX conversion",
+          "multi-currency settlement"
+        ],
+        "tags": [
+          "Internal"
+        ],
+        "status": "Active",
+        "accent": "from-sky-500/30 via-cyan-400/10 to-transparent",
+        "githubUrl": "",
+        "demoUrl": "https:/tfab.space",
+        "visible": true
+      }
+    ]
+  }
+}
